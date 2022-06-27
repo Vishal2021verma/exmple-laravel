@@ -17,5 +17,6 @@ use App\Http\Controllers\ToDoListController;
 Route::get('/',[ToDoListController::class, 'index']);
 
 Route::post('/saveItemRoute',[ToDoListController::class, 'saveItem'])->name('saveItem');
+Route::post('/markCompleteRoute/{id}',[ToDoListController::class, 'markComplete'])->name('markComplete');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

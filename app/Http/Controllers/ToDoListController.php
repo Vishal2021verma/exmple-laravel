@@ -6,11 +6,19 @@ use Illuminate\Http\Request;
 use App\Models\ListItem;
 
 use Illuminate\Support\Facades\Log;
+use phpDocumentor\Reflection\PseudoTypes\List_;
 
 class ToDoListController extends Controller
 {
     public function index(){
-        return view('welcome', ['listItems' => ListItem::all()]);
+        return view('welcome', ['listItems' => ListItem::where('is_complete',0)->get()]);
+    }
+    public function markComplete($id){
+    
+        $listItem = ListItem::find($id);
+        $listItem->is_complete = 1;
+        $listItem->save();
+        return redirect('/');
     }
     //
     public function saveItem(Request $request){
