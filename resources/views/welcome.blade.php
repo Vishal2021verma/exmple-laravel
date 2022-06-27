@@ -409,24 +409,24 @@
         class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
         <div style="color: white">
 
-
+            <h1>to do List</h1>
             <h3>List Items</h3>
 
             @foreach ($listItems as $listItem)
                 <div style="display: flex; align-items: center;">
                     <p>Item: {{ $listItem->name }}</p>
-                        <form method="post" action="{{ route('markComplete',$listItem->id) }}" accept-charset="UTF-8">
-                            {{ csrf_field() }}
-                            <button type="submit" style="max-height:25px; margin-left: 20px; ">Mark Complete</button>
-                      </form>  
+                    <form method="post" action="{{ route('markComplete', $listItem->id) }}" accept-charset="UTF-8">
+                        {{ csrf_field() }}
+                        <button type="submit" style="max-height:25px; margin-left: 20px; ">Mark Complete</button>
+                    </form>
                 </div>
             @endforeach
 
-            <h1>to do List</h1>
-            <h3>Add new Item</h3>
+
+         
             <form method="post" action="{{ route('saveItem') }}" accept-charset="UTF-8">
                 {{ csrf_field() }}
-                <label for="item">New Item</label>
+                <label for="item">Add a new Item</label>
                 <br>
                 <input type="text" name="listItem">
                 <br>
@@ -434,7 +434,7 @@
             </form>
             <hr>
 
-            
+
 
 
         </div>
